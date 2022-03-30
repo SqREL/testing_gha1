@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - id: foo
-        uses: SqREL/testing_gha@v1
+        uses: SqREL/testing_gha@v2
         with:
           who-to-greet: 'Mona the Octocat'
       - name: Echo input
