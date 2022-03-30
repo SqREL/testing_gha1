@@ -1,5 +1,10 @@
 on: [push]
 
+inputs:
+  test_param:
+    required: false
+    default: default_test_param
+
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
@@ -10,5 +15,9 @@ jobs:
         uses: SqREL/testing_gha@v1
         with:
           who-to-greet: 'Mona the Octocat'
+      - name: Echo input
+        shell: bash
+        run: |
+          echo "INPUT PARAM: ${{ github.event.inputs.test_param }}"
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash
