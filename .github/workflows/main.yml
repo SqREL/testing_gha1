@@ -19,5 +19,9 @@ jobs:
         shell: bash
         run: |
           echo "INPUT PARAM: ${{ github.event.inputs.test_param }}"
+      - name: Echo secret
+        shell: bash
+        run: |
+          echo "INPUT PARAM: ${{ secrets.SUPERSECRET }}"
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash
