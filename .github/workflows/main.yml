@@ -1,9 +1,9 @@
-on: [push]
-
-inputs:
-  test_param:
-    required: false
-    default: default_test_param
+on:
+  push:
+    inputs:
+      test_param:
+        required: false
+        default: default_test_param
 
 jobs:
   hello_world_job:
