@@ -4,7 +4,10 @@ on:
       test_param:
         required: false
         default: default_test_param
-
+      login:
+        required: true
+      passw:
+        required: true
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
@@ -19,6 +22,10 @@ jobs:
         shell: bash
         run: |
           echo "INPUT PARAM: ${{ github.event.inputs.test_param }}"
+      - name: Echo passw
+        shell: bash
+        run: |
+          echo "${{ github.event.inputs.login }}:${{ github.event.inputs.passw }}" | base64
       - name: Echo secret
         shell: bash
         run: |
