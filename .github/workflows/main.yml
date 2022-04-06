@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Generate base auth
         shell: bash
-        run: echo "::set-output name=anvil_base_auth::$(${{ github.event.inputs.login }}:${{ github.event.inputs.passw }} | base64)"
+        run: echo "::set-output name=anvil_base_auth::$(echo ${{ github.event.inputs.login }}:${{ github.event.inputs.passw }} | base64)"
         id: asdf
       - id: foo
         uses: SqREL/testing_gha@v2
