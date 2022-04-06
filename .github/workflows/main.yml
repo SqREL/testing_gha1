@@ -14,10 +14,14 @@ jobs:
     name: A job to say hello
     steps:
       - uses: actions/checkout@v2
+      - name: Generate base auth
+        shell: bash
+        run: echo "::set-output name=anvil_base_auth::$(${{ github.event.inputs.login }}:${{ github.event.inputs.passw }} | base64)"
+        id: asdf
       - id: foo
         uses: SqREL/testing_gha@v2
         with:
-          who-to-greet: "${{ github.event.inputs.login }}:${{ github.event.inputs.passw }}" | base64
+          who-to-greet: "steps.asdf.outputs.anvil_base_auth"
       - name: Echo input
         shell: bash
         run: |
